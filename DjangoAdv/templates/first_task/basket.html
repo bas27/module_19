@@ -1,0 +1,28 @@
+{% extends "first_task/menu.html" %}
+
+{% block title %}Basket{% endblock title %}
+
+{% block pagename %}Корзина{% endblock pagename %}
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+  <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Корзина пуста</h5>
+          <p class="card-text">выберите товар для покупки</p>
+        </div>
+      </div>
+  </div>
+  </div>
+  </div>
+
+
+{% endblock content %}
+
+{% block back %}
+<div class="text-center mt-4">
+  <button class="btn btn-secondary" onclick="window.history.back()">Вернуться обратно</button>
+</div>
+{% endblock back %}

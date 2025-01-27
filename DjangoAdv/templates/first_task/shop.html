@@ -1,0 +1,29 @@
+{% extends "first_task/menu.html" %}
+
+{% block title %}Shop{% endblock title %}
+
+{% block pagename %}Магазин{% endblock pagename %}
+
+{% block content %}
+    <div class="container mt-3">
+    <div class="row">
+    {% for j  in data.games %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ j }}</h5>
+                    <button class="btn btn-primary">Купить</button>
+                </div>
+            </div>
+        </div>
+    
+    {% endfor %}
+    </div>
+    </div>
+{% endblock content %}
+
+{% block back %}
+<div class="text-center mt-4">
+    <button class="btn btn-secondary" onclick="window.history.back()">Вернуться обратно</button>
+</div>
+{% endblock back %}
