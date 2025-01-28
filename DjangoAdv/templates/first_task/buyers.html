@@ -1,0 +1,30 @@
+{% extends "first_task/menu.html" %}
+
+{% block title %}Buyers{% endblock title %}
+
+{% block pagename %}Список покупателей{% endblock pagename %}
+
+{% block content %}
+{% for buyer in buyers %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ buyer.name }}</h5>
+          <p class="card-text">Баланс: {{ buyer.balance }}, Возраст: {{ buyer.age }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock content %}
+
+{% block back %}
+<div class="text-center mt-4">
+  <button class="btn btn-secondary" onclick="window.history.back()">Вернуться обратно</button>
+</div>
+{% endblock back %}

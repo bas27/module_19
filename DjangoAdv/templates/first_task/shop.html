@@ -7,11 +7,13 @@
 {% block content %}
     <div class="container mt-3">
     <div class="row">
-    {% for j  in data.games %}
+    {% for j in data %}
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ j }}</h5>
+                    <h2 class="card-title">{{ j.title }}</h2>
+                    <p class="card-text">Описание: {{ j.description }}</p>
+                    <h5 class="card-title">Цена: {{ j.cost }} ₽</h5>
                     <button class="btn btn-primary">Купить</button>
                 </div>
             </div>
