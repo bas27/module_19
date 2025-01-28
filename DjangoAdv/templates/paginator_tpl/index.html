@@ -1,0 +1,29 @@
+{% extends 'paginator_tpl/base.html' %}
+
+{% block content %}
+    <h1>Список постов</h1>
+    <ul>
+        {% for post in page_posts %}
+            <li>
+                {{ post.title }} ({{ post.created_at }})
+                <p>{{ post.content }}</p>
+            </li>
+        {% empty %}
+            <p>Нет постов.</p>
+        {% endfor %}
+    </ul>
+    <!-- показываем пагинатор -->
+    <div class="pagination">
+        <p>Страницы:
+            {% if page_posts.has_previous %}
+                <a href="?page=1"><<</a>
+                <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
+            {% endif %}
+            {{ page_posts.number }} {{ paginator.num_pages }}
+            {% if page_posts.has_next %}
+                <a href="?page={{ page_posts.next_page_number }}">Next</a>
+                <a href="?page={{ paginator.num_pages }}">>>></a>
+            {% endif %}
+        </p>
+    </div>
+{% endblock %}
