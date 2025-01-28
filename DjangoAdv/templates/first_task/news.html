@@ -1,0 +1,32 @@
+{% extends 'first_task/menu.html' %}
+{% block pagename %}<h1>Игры</h1>{% endblock %}
+{% block menu %}{{ block.super }}{% endblock %}
+{% block content %}
+    <hr>
+    {% for new in page_contents %}
+        <h2>{{ new.title }}</h2>
+        <br>
+        {{ new.content }}
+        <br>
+        <small style="float: right; margin-right: 20px;">{{ new.date }}</small>
+        <hr>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_contents.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ page_contents.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_contents.number }} из {{ page_contents.paginator.num_pages }}.
+            </span>
+
+            {% if page_contents.has_next %}
+                <a href="?page={{ page_contents.next_page_number }}">Следующая</a>
+                <a href="?page={{ page_contents.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

@@ -36,3 +36,17 @@ class Game(models.Model):
     class Meta:
         verbose_name = "Игра"
         verbose_name_plural = "Игры"
+
+
+class News(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Заголовок")
+    content = models.TextField(verbose_name="Статья")
+    date = models.DateField(auto_now_add=True, verbose_name="Дата статьи")
+
+    def __str__(self):
+        return (f'Заголовок: {self.title}\n'
+                f'Дата: {self.date}')
+
+    class Meta:
+        verbose_name = "Новость"
+        verbose_name_plural = "Новости"

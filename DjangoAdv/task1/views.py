@@ -1,14 +1,21 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Buyer, Game
+from .models import Buyer, Game, News
 from .forms import UserRegister
 
-# Create your views here.
 
-data = {
-    'games':
-        ['The Witcher 3: Wild Hunt', 'Grand Theft Auto V', 'The Elder Scrolls V: Skyrim']
-        }
+def news(request):
+    contents = News.objects.all()
+    paginator = Paginator(contents, 2)
+    page_number = request.GET.get('page')
+    try:
+        page_contents = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        page_contents = paginator.page(1)
+    except EmptyPage:
+        page_contents = paginator.page(paginator.num_pages)
+    return render(request, 'first_task/news.html', {'page_contents': page_contents})
 
 
 def get_buyers(request):
