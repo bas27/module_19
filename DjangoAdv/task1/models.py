@@ -50,3 +50,23 @@ class News(models.Model):
     class Meta:
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
+
+
+class Postcode(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    postcode = models.IntegerField(verbose_name="Почтовый индекс")
+    city = models.CharField(max_length=100, verbose_name="Город")
+    street = models.CharField(max_length=100, verbose_name="Улица")
+    house = models.IntegerField(verbose_name="Дом")
+    flat = models.IntegerField(verbose_name="Квартира")
+
+    def __str__(self):
+        return (f'Почтовый индекс: {self.postcode}\n'
+                f'Город: {self.city}\n'
+                f'Улица: {self.street}\n'
+                f'Дом: {self.house}\n'
+                f'Квартира: {self.flat}')
+
+    class Meta:
+        verbose_name = "Почтовый индекс"
+        verbose_name_plural = "Почтовые индексы"

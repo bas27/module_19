@@ -36,3 +36,31 @@ Game.objects.get(id=2).buyer.set((first,))
 Game.objects.get(id=3).buyer.set((first, second, third))
 
 ```
+
+После создания и подключения БД в Postgresql делаю запросы:
+
+python manage.py shell
+
+from .models import Postcode
+```python
+from task1.models import Postcode
+Postcode.objects.create(id=2, postcode=600302, city='Nnovgorod', street='rai', house=3, flat=5)
+Postcode.objects.create(id=1, postcode=600300, city='Ganduras', street='Oboima', house=3, flat=5)
+ 
+alls_post = Postcode.objects.all()
+print(alls_post)
+
+from task1.models import News      
+news = News.objects.all()
+print(news)
+
+>>> news1 = News.objects.get(id=1)       
+>>> print(news1)
+
+>>> b1 = Buyer.objects.filter(age=25) 
+>>> print(b1)
+
+Агрегатные функции
+print(len(news))
+
+```
